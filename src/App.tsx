@@ -16,32 +16,41 @@ import RoadTaxPayments from "./pages/RoadTaxPayments";
 import ReportIssue from "./pages/ReportIssue";
 import DigitalIdentity from "./pages/DigitalIdentity";
 
-const queryClient = new QueryClient();
+const App = () => {
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        staleTime: 5 * 60 * 1000,
+        retry: 1,
+      },
+    },
+  });
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Navigate to="/get-started" replace />} />
-          <Route path="/get-started" element={<GetStarted />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/verify" element={<Verify />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/driving-license-services" element={<DrivingLicenseServices />} />
-          <Route path="/permit-payments" element={<PermitPayments />} />
-          <Route path="/vehicle-registration" element={<VehicleRegistration />} />
-          <Route path="/road-tax-payments" element={<RoadTaxPayments />} />
-          <Route path="/report-issue" element={<ReportIssue />} />
-          <Route path="/digital-identity" element={<DigitalIdentity />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Navigate to="/get-started" replace />} />
+            <Route path="/get-started" element={<GetStarted />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/verify" element={<Verify />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/driving-license-services" element={<DrivingLicenseServices />} />
+            <Route path="/permit-payments" element={<PermitPayments />} />
+            <Route path="/vehicle-registration" element={<VehicleRegistration />} />
+            <Route path="/road-tax-payments" element={<RoadTaxPayments />} />
+            <Route path="/report-issue" element={<ReportIssue />} />
+            <Route path="/digital-identity" element={<DigitalIdentity />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;
