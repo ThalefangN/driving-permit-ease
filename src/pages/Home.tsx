@@ -42,7 +42,7 @@ const Home = () => {
       icon: Route, 
       title: "Road Tax Payments", 
       desc: "Pay road taxes and fees online quickly and easily",
-      path: "/road-tax"
+      path: "/road-tax-payments"
     },
     { 
       icon: AlertTriangle, 
@@ -59,7 +59,7 @@ const Home = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background pb-16 animate-fade-in">
+    <div className="min-h-screen bg-background pb-20 animate-fade-in">
       <div className="bg-primary text-white p-4">
         <div className="flex justify-between items-center">
           <h1 className="text-xl font-semibold">Welcome, User!</h1>
@@ -80,16 +80,16 @@ const Home = () => {
         {services.map((service, index) => (
           <Card 
             key={index} 
-            className="p-4 hover:shadow-lg transition-shadow cursor-pointer"
+            className="p-6 hover:shadow-lg transition-shadow cursor-pointer"
             onClick={() => navigate(service.path)}
           >
             <div className="flex items-start space-x-4">
-              <div className="bg-primary/10 p-3 rounded-full">
-                <service.icon className="h-6 w-6 text-primary" />
+              <div className="bg-primary/10 p-4 rounded-full">
+                <service.icon className="h-8 w-8 text-primary" />
               </div>
               <div className="flex-1">
-                <h3 className="font-semibold">{service.title}</h3>
-                <p className="text-sm text-muted-foreground">{service.desc}</p>
+                <h3 className="text-xl font-semibold">{service.title}</h3>
+                <p className="text-sm text-muted-foreground mt-1">{service.desc}</p>
               </div>
             </div>
           </Card>
@@ -107,9 +107,9 @@ const Home = () => {
             <Button
               key={index}
               variant="ghost"
-              className="flex-1 flex flex-col items-center py-2"
+              className="flex-1 flex flex-col items-center py-2 hover:bg-transparent"
             >
-              <item.icon className="h-5 w-5" />
+              <item.icon className="h-6 w-6" />
               <span className="text-xs mt-1">{item.label}</span>
             </Button>
           ))}

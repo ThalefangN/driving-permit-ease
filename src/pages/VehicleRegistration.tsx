@@ -1,13 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
 import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
-import { Calendar as CalendarIcon, CreditCard, User, ArrowLeft } from "lucide-react";
-import { useState } from "react";
+import { ArrowLeft, CreditCard, FileText } from "lucide-react";
 
-const DrivingLicenseServices = () => {
+const VehicleRegistration = () => {
   const navigate = useNavigate();
-  const [date, setDate] = useState<Date | undefined>(undefined);
 
   return (
     <div className="min-h-screen bg-background pb-16 animate-fade-in">
@@ -16,30 +14,28 @@ const DrivingLicenseServices = () => {
           <Button variant="ghost" size="icon" onClick={() => navigate("/home")} className="text-white">
             <ArrowLeft className="h-6 w-6" />
           </Button>
-          <h1 className="text-xl font-semibold">Driving License Services</h1>
+          <h1 className="text-xl font-semibold">Vehicle Registration</h1>
         </div>
       </div>
 
       <div className="p-4 space-y-4">
         <Card className="p-4">
-          <h2 className="text-lg font-semibold mb-4">Book a Driving Test</h2>
+          <h2 className="text-lg font-semibold mb-4">Register a New Vehicle</h2>
           <div className="space-y-4">
-            <Calendar
-              mode="single"
-              selected={date}
-              onSelect={setDate}
-              className="rounded-md border"
-            />
+            <Input placeholder="Vehicle Make" />
+            <Input placeholder="Vehicle Model" />
+            <Input placeholder="Year" type="number" />
+            <Input placeholder="Chassis Number" />
             <Button className="w-full bg-primary hover:bg-primary/90">
-              <CalendarIcon className="mr-2 h-4 w-4" /> Book Test
+              Register Vehicle
             </Button>
           </div>
         </Card>
 
         <Card className="p-4">
-          <h2 className="text-lg font-semibold mb-4">Pay for Driving License</h2>
+          <h2 className="text-lg font-semibold mb-4">Pay for Registration</h2>
           <p className="text-sm text-muted-foreground mb-4">
-            Pay via mobile money, debit/credit card, or other supported payment methods
+            Pay for vehicle registration via mobile payment methods
           </p>
           <Button className="w-full bg-primary hover:bg-primary/90">
             <CreditCard className="mr-2 h-4 w-4" /> Pay Now
@@ -47,12 +43,12 @@ const DrivingLicenseServices = () => {
         </Card>
 
         <Card className="p-4">
-          <h2 className="text-lg font-semibold mb-4">My Driving License Status</h2>
+          <h2 className="text-lg font-semibold mb-4">View Registration Status</h2>
           <p className="text-sm text-muted-foreground mb-4">
-            View your current driving license status, renewal date, and required actions
+            View your vehicle registration status or print registration certificate
           </p>
           <Button variant="outline" className="w-full">
-            <User className="mr-2 h-4 w-4" /> View Status
+            <FileText className="mr-2 h-4 w-4" /> View Status
           </Button>
         </Card>
       </div>
@@ -60,4 +56,4 @@ const DrivingLicenseServices = () => {
   );
 };
 
-export default DrivingLicenseServices;
+export default VehicleRegistration;

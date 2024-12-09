@@ -10,6 +10,11 @@ import Verify from "./pages/Verify";
 import ForgotPassword from "./pages/ForgotPassword";
 import Home from "./pages/Home";
 import DrivingLicenseServices from "./pages/DrivingLicenseServices";
+import PermitPayments from "./pages/PermitPayments";
+import VehicleRegistration from "./pages/VehicleRegistration";
+import RoadTaxPayments from "./pages/RoadTaxPayments";
+import ReportIssue from "./pages/ReportIssue";
+import DigitalIdentity from "./pages/DigitalIdentity";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +33,11 @@ const App = () => (
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/home" element={<Home />} />
           <Route path="/driving-license-services" element={<DrivingLicenseServices />} />
+          <Route path="/permit-payments" element={<PermitPayments />} />
+          <Route path="/vehicle-registration" element={<VehicleRegistration />} />
+          <Route path="/road-tax-payments" element={<RoadTaxPayments />} />
+          <Route path="/report-issue" element={<ReportIssue />} />
+          <Route path="/digital-identity" element={<DigitalIdentity />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
