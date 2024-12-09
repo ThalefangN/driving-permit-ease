@@ -9,6 +9,7 @@ import SignIn from "./pages/SignIn";
 import Verify from "./pages/Verify";
 import ForgotPassword from "./pages/ForgotPassword";
 import Home from "./pages/Home";
+import DrivingLicenseServices from "./pages/DrivingLicenseServices";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/verify" element={<Verify />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/driving-license-services" element={<DrivingLicenseServices />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
