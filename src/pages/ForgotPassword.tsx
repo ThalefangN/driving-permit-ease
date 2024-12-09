@@ -13,8 +13,8 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-background p-6 animate-fade-in">
-      <div className="max-w-md mx-auto w-full space-y-6">
+    <div className="min-h-screen flex items-center justify-center bg-background p-6 animate-fade-in">
+      <div className="max-w-md w-full space-y-6">
         <div className="text-center space-y-2">
           <h1 className="text-2xl font-bold">Reset Password</h1>
           <p className="text-sm text-muted-foreground">

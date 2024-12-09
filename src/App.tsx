@@ -9,6 +9,9 @@ import SignIn from "./pages/SignIn";
 import Verify from "./pages/Verify";
 import ForgotPassword from "./pages/ForgotPassword";
 import Home from "./pages/Home";
+import Services from "./pages/Services";
+import Notifications from "./pages/Notifications";
+import Profile from "./pages/Profile";
 import DrivingLicenseServices from "./pages/DrivingLicenseServices";
 import PermitPayments from "./pages/PermitPayments";
 import VehicleRegistration from "./pages/VehicleRegistration";
@@ -40,6 +43,9 @@ const App = () => {
             <Route path="/verify" element={<Verify />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/notifications" element={<Notifications />} />
+            <Route path="/profile" element={<Profile />} />
             <Route path="/driving-license-services" element={<DrivingLicenseServices />} />
             <Route path="/permit-payments" element={<PermitPayments />} />
             <Route path="/vehicle-registration" element={<VehicleRegistration />} />
