@@ -6,7 +6,7 @@ import {
   Car,
   CreditCard,
   Truck,
-  Road,
+  Route,
   AlertTriangle,
   QrCode,
   Home as HomeIcon,
@@ -42,7 +42,7 @@ const Home = () => {
           { icon: Car, title: "Driving License Services", desc: "Learn more about driving license exam bookings and payments" },
           { icon: CreditCard, title: "Permit & License Payments", desc: "Pay for driving licenses and permits with ease" },
           { icon: Truck, title: "Vehicle Registration", desc: "Register or renew your vehicle in a few simple steps" },
-          { icon: Road, title: "Road Tax Payments", desc: "Pay road taxes and fees online quickly and easily" },
+          { icon: Route, title: "Road Tax Payments", desc: "Pay road taxes and fees online quickly and easily" },
           { icon: AlertTriangle, title: "Report an Issue", desc: "Report issues like road accidents, traffic violations, etc" },
           { icon: QrCode, title: "Digital Identity / QR Code", desc: "Access your transport-related documents and digital ID" },
         ].map((service, index) => (
