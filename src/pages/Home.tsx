@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import {
   Search,
   Car,
@@ -66,10 +67,10 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-background pb-20 animate-fade-in">
-      <div className="p-4 bg-white shadow-sm">
+      <div className="p-4">
         <div className="flex justify-between items-center">
           <h1 className="text-xl font-semibold">Welcome, User!</h1>
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon" onClick={() => navigate("/profile")}>
             <User className="h-6 w-6" />
           </Button>
         </div>
@@ -85,8 +86,11 @@ const Home = () => {
           {services.map((service, index) => (
             <Card 
               key={index} 
-              className={`p-6 hover:shadow-lg transition-shadow cursor-pointer ${service.bgColor}`}
-              onClick={() => navigate(service.path)}
+              className={`p-6 hover:shadow-lg transition-shadow cursor-pointer ${service.bgColor} animate-fade-in`}
+              onClick={() => {
+                navigate(service.path);
+                toast.success(`Navigating to ${service.title}`);
+              }}
             >
               <div className="flex items-start space-x-4">
                 <div className="p-4 rounded-full bg-white/80">
@@ -114,7 +118,10 @@ const Home = () => {
               key={index}
               variant="ghost"
               className="flex-1 flex flex-col items-center py-2 hover:bg-transparent"
-              onClick={() => navigate(item.path)}
+              onClick={() => {
+                navigate(item.path);
+                toast.success(`Navigating to ${item.label}`);
+              }}
             >
               <item.icon className="h-6 w-6" />
               <span className="text-xs mt-1">{item.label}</span>

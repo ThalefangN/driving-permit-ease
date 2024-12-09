@@ -1,32 +1,43 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Bell } from "lucide-react";
+import { ArrowLeft, Bell, AlertTriangle, Info } from "lucide-react";
+import { toast } from "sonner";
 
 const Notifications = () => {
   const navigate = useNavigate();
 
   const notifications = [
     {
+      icon: Bell,
       title: "New Message",
-      message: "You have a new message regarding your vehicle registration",
-      time: "2 hours ago",
-      type: "info",
+      description: "You have a new message regarding your vehicle registration",
+      time: "2 minutes ago",
       bgColor: "bg-blue-50"
     },
     {
-      title: "Payment Confirmation",
-      message: "Your driving license payment was successfully processed",
-      time: "5 hours ago",
-      type: "success",
-      bgColor: "bg-green-50"
+      icon: AlertTriangle,
+      title: "Traffic Alert",
+      description: "Heavy traffic reported on Main Street",
+      time: "1 hour ago",
+      bgColor: "bg-yellow-50"
     },
-    // Add more notifications as needed
+    {
+      icon: Info,
+      title: "Payment Reminder",
+      description: "Your road tax payment is due in 5 days",
+      time: "2 hours ago",
+      bgColor: "bg-red-50"
+    }
   ];
+
+  const handleNotificationClick = (notification: any) => {
+    toast.success(`Opening notification: ${notification.title}`);
+  };
 
   return (
     <div className="min-h-screen bg-background pb-16 animate-fade-in">
-      <div className="p-4 bg-white shadow-sm">
+      <div className="p-4">
         <div className="flex items-center space-x-4">
           <Button variant="ghost" size="icon" onClick={() => navigate("/home")}>
             <ArrowLeft className="h-6 w-6" />
@@ -39,14 +50,17 @@ const Notifications = () => {
         {notifications.map((notification, index) => (
           <Card
             key={index}
-            className={`p-4 ${notification.bgColor}`}
+            className={`p-4 hover:shadow-lg transition-shadow cursor-pointer animate-fade-in ${notification.bgColor}`}
+            onClick={() => handleNotificationClick(notification)}
           >
-            <div className="flex items-start space-x-3">
-              <Bell className="h-5 w-5 mt-1" />
-              <div>
+            <div className="flex items-start space-x-4">
+              <div className="p-2 rounded-full bg-white/80">
+                <notification.icon className="h-5 w-5" />
+              </div>
+              <div className="flex-1">
                 <h3 className="font-semibold">{notification.title}</h3>
-                <p className="text-sm text-muted-foreground mt-1">{notification.message}</p>
-                <p className="text-xs text-muted-foreground mt-2">{notification.time}</p>
+                <p className="text-sm text-muted-foreground">{notification.description}</p>
+                <p className="text-xs text-muted-foreground mt-1">{notification.time}</p>
               </div>
             </div>
           </Card>
