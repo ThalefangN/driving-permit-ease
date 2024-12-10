@@ -18,6 +18,8 @@ import VehicleRegistration from "./pages/VehicleRegistration";
 import RoadTaxPayments from "./pages/RoadTaxPayments";
 import ReportIssue from "./pages/ReportIssue";
 import DigitalIdentity from "./pages/DigitalIdentity";
+import BottomNav from "./components/BottomNav";
+import { useLocation } from "react-router-dom";
 
 const App = () => {
   const queryClient = new QueryClient({
@@ -29,12 +31,15 @@ const App = () => {
     },
   });
 
+  const location = useLocation();
+  const showBottomNav = !['/get-started', '/signup', '/signin', '/verify', '/forgot-password'].includes(location.pathname);
+
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
-        <Sonner />
-        <BrowserRouter>
+        <Sonner position="top-center" />
+        <div className="min-h-screen bg-background">
           <Routes>
             <Route path="/" element={<Navigate to="/get-started" replace />} />
             <Route path="/get-started" element={<GetStarted />} />
@@ -53,7 +58,8 @@ const App = () => {
             <Route path="/report-issue" element={<ReportIssue />} />
             <Route path="/digital-identity" element={<DigitalIdentity />} />
           </Routes>
-        </BrowserRouter>
+          {showBottomNav && <BottomNav />}
+        </div>
       </TooltipProvider>
     </QueryClientProvider>
   );

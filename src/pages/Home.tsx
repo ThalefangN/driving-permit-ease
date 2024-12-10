@@ -11,9 +11,6 @@ import {
   Route,
   AlertTriangle,
   QrCode,
-  Home as HomeIcon,
-  Wrench,
-  Bell,
   User
 } from "lucide-react";
 
@@ -65,8 +62,38 @@ const Home = () => {
     },
   ];
 
+  const handleServiceClick = (service: any) => {
+    navigate(service.path);
+    toast.success(`Opening ${service.title}`);
+  };
+
+  const handleUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      toast.promise(
+        new Promise((resolve) => setTimeout(resolve, 2000)),
+        {
+          loading: 'Uploading file...',
+          success: 'File uploaded successfully!',
+          error: 'Upload failed. Please try again.',
+        }
+      );
+    }
+  };
+
+  const handleDownload = () => {
+    toast.promise(
+      new Promise((resolve) => setTimeout(resolve, 1500)),
+      {
+        loading: 'Preparing download...',
+        success: 'File downloaded successfully!',
+        error: 'Download failed. Please try again.',
+      }
+    );
+  };
+
   return (
-    <div className="min-h-screen bg-background pb-20 animate-fade-in">
+    <div className="min-h-screen bg-background pb-24 animate-fade-in">
       <div className="p-4">
         <div className="flex justify-between items-center">
           <h1 className="text-xl font-semibold">Welcome, User!</h1>
@@ -87,10 +114,7 @@ const Home = () => {
             <Card 
               key={index} 
               className={`p-6 hover:shadow-lg transition-shadow cursor-pointer ${service.bgColor} animate-fade-in`}
-              onClick={() => {
-                navigate(service.path);
-                toast.success(`Navigating to ${service.title}`);
-              }}
+              onClick={() => handleServiceClick(service)}
             >
               <div className="flex items-start space-x-4">
                 <div className="p-4 rounded-full bg-white/80">
@@ -106,29 +130,12 @@ const Home = () => {
         </div>
       </div>
 
-      <nav className="fixed bottom-0 left-0 right-0 bg-white border-t">
-        <div className="flex justify-around p-2">
-          {[
-            { icon: HomeIcon, label: "Home", path: "/home" },
-            { icon: Wrench, label: "Services", path: "/services" },
-            { icon: Bell, label: "Notifications", path: "/notifications" },
-            { icon: User, label: "Profile", path: "/profile" },
-          ].map((item, index) => (
-            <Button
-              key={index}
-              variant="ghost"
-              className="flex-1 flex flex-col items-center py-2 hover:bg-transparent"
-              onClick={() => {
-                navigate(item.path);
-                toast.success(`Navigating to ${item.label}`);
-              }}
-            >
-              <item.icon className="h-6 w-6" />
-              <span className="text-xs mt-1">{item.label}</span>
-            </Button>
-          ))}
-        </div>
-      </nav>
+      <input
+        type="file"
+        id="fileUpload"
+        className="hidden"
+        onChange={handleUpload}
+      />
     </div>
   );
 };
